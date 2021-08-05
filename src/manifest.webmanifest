@@ -1,7 +1,7 @@
 {
   "name": "mogyuchi",
   "short_name": "mogyuchi",
-  "theme_color": "#1976d2",
+  "theme_color": "#F58F98",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
