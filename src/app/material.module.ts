@@ -40,7 +40,7 @@ import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [],
-  imports: [
+  exports: [
     CommonModule,
     MatAutocompleteModule,
     MatBadgeModule,
