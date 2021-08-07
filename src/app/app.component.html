@@ -1,6 +1,5 @@
-<router-outlet></router-outlet>
-<mat-toolbar [class.mat-elevation-z5]=true color="primary">
-  <button mat-button class="title">&nbsp;{{ title }}</button>
+<mat-toolbar [class.mat-elevation-z5]="true" color="primary">
+  <button mat-button class="title" routerLink=".">&nbsp;{{ title }}</button>
   <button mat-icon-button>
     <mat-icon>chat</mat-icon>
   </button>
@@ -14,3 +13,4 @@
     <mat-icon>link</mat-icon>
   </button>
 </mat-toolbar>
+<router-outlet></router-outlet>
