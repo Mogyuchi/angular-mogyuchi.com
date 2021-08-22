@@ -13,7 +13,12 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { RandomfactsComponent } from './randomfacts/randomfacts.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, IntroductionComponent, RandomfactsComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    IntroductionComponent,
+    RandomfactsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

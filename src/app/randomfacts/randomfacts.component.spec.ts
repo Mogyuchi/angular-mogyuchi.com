@@ -8,9 +8,8 @@ describe('RandomfactsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RandomfactsComponent ]
-    })
-    .compileComponents();
+      declarations: [RandomfactsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
