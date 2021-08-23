@@ -11,6 +11,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { HomeComponent } from './home/home.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { RandomfactsComponent } from './randomfacts/randomfacts.component';
+import { SkillsComponent } from './skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RandomfactsComponent } from './randomfacts/randomfacts.component';
     HomeComponent,
     IntroductionComponent,
     RandomfactsComponent,
+    SkillsComponent,
   ],
   imports: [
     BrowserModule,
