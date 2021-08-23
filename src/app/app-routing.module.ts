@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { RandomfactsComponent } from './randomfacts/randomfacts.component';
+import { SkillsComponent } from './skills/skills.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'randomfacts',
     component: RandomfactsComponent,
+  },
+  {
+    path: 'skills',
+    component: SkillsComponent,
   },
 ];
 
