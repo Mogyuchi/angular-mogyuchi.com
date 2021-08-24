@@ -10,9 +10,17 @@ import { environment } from '../environments/environment';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { HomeComponent } from './home/home.component';
 import { IntroductionComponent } from './introduction/introduction.component';
+import { RandomfactsComponent } from './randomfacts/randomfacts.component';
+import { SkillsComponent } from './skills/skills.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, IntroductionComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    IntroductionComponent,
+    RandomfactsComponent,
+    SkillsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
