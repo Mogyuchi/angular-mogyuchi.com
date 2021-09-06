@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  release:
+    types:
+      - created
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          
+      - name: Install npm packages
+        run: npm install
+        
+      - name: Build
+        run: npm run build -- --prod
+        
+      - name: SSG
+        run: npx scully
+      
+      - name: Get npm version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+      
+      - name: Zip artifacts
+        run: |
+          cd ./dist/static
+          zip -r ${{ steps.package-version.outputs.current-version }} .
+      
+      - name: Upload assets
+        uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./dist/static/${{ steps.package-version.outputs.current-version}}.zip
