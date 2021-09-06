@@ -37,7 +37,7 @@ jobs:
         id: create_release
         uses: elgohr/Github-Release-Action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: ${{ steps.date.outputs.today }}
       - uses: shogo82148/actions-upload-release-asset@v1
