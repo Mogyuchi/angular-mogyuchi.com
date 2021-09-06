@@ -2,7 +2,7 @@ name: Release CI
 
 on:
   push:
-    branches: [ topic/actions ]
+    branches: [ main ]
 
 jobs:
   build:
