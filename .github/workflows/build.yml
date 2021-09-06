@@ -1,11 +1,10 @@
-name: CI
+name: Build CI
 
 on:
-  push:
-    branches: [ topic/actions ]
-
-  workflow_dispatch:
-
+  release:
+    types:
+      - created
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,13 +29,7 @@ jobs:
         run: |
           cd ./dist/static
           zip -r ${{ steps.package-version.outputs.current-version }} .
-      - name: Create a Release
-        uses: elgohr/Github-Release-Action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: ${{ steps.package-version.outputs.current-version }}
       - uses: shogo82148/actions-upload-release-asset@v1
         with:
-          upload_url: https://uploads.github.com/repos/Mogyuchi/mogyuchi.com/releases/${{ steps.package-version.outputs.current-version }}/assets
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./dist/static/${{ steps.package-version.outputs.current-version}}.zip
