@@ -37,7 +37,7 @@ jobs:
       - name: Zip artifacts
         run: |
           cd ./dist/static
-          zip -r ${{ steps.package-version.outputs.current-version }} .
+          zip -r ${{ steps.package-version.outputs.current-version }}.zip .
       
       - name: Upload assets
         uses: shogo82148/actions-upload-release-asset@v1
