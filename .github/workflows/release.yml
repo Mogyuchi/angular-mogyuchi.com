@@ -5,23 +5,46 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
-      
-      - name: get-npm-version
+
+      - name: Node.js ${{ matrix.node-version }} をセットアップ
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 依存パッケージをインストール
+        run: npm ci
+
+      - name: Angularのビルド
+        run: npm run build -- --prod
+
+      - name: SSGのビルド
+        run: npx scully
+
+      - name: npm のバージョンを取得
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
-        
-      - name: Create a Release
-        uses: elgohr/Github-Release-Action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 生成物をzip化
+        run: |
+          cd ./dist/static
+          zip -r v${{ steps.package-version.outputs.current-version }}.zip .
+
+      - name: タグを作成
+        run: |
+          git tag v${{ steps.package-version.outputs.current-version }}
+          git push origin v${{ steps.package-version.outputs.current-version }}
+
+      - name: リリースを作成
+        uses: ncipollo/release-action@v1
         with:
-          args: ${{ steps.package-version.outputs.current-version }}
+          artifacts: "./dist/static/v${{ steps.package-version.outputs.current-version}}.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
