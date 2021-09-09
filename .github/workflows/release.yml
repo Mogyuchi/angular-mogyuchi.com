@@ -38,13 +38,10 @@ jobs:
           cd ./dist/static
           zip -r v${{ steps.package-version.outputs.current-version }}.zip .
 
-      - name: タグを作成
-        run: |
-          git tag v${{ steps.package-version.outputs.current-version }}
-          git push origin v${{ steps.package-version.outputs.current-version }}
-
       - name: リリースを作成
         uses: ncipollo/release-action@v1
         with:
+          tag: v${{ steps.package-version.outputs.current-version }}
+          commit: ${{ github.sha }}
           artifacts: "./dist/static/v${{ steps.package-version.outputs.current-version}}.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
