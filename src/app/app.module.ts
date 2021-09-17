@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { RandomfactsComponent } from './randomfacts/randomfacts.component';
 import { SkillsComponent } from './skills/skills.component';
+import { LinksComponent } from './links/links.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SkillsComponent } from './skills/skills.component';
     IntroductionComponent,
     RandomfactsComponent,
     SkillsComponent,
+    LinksComponent,
   ],
   imports: [
     BrowserModule,
