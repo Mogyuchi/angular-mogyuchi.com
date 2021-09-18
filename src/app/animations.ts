@@ -21,11 +21,15 @@ const nextPageTransition = [
     ],
     { optional: true }
   ),
-  query(':enter', [style({ right: '-100%' })]),
+  query(':enter', [style({ transform: 'translateX(100%)' })]),
   query(':leave', animateChild()),
   group([
-    query(':leave', [animate('300ms ease-out', style({ right: '100%' }))]),
-    query(':enter', [animate('300ms ease-out', style({ right: '0%' }))]),
+    query(':leave', [
+      animate('300ms ease-out', style({ transform: 'translateX(-100%)' })),
+    ]),
+    query(':enter', [
+      animate('300ms ease-out', style({ transform: 'translateX(0%)' })),
+    ]),
   ]),
   query(':enter', animateChild()),
 ];
@@ -43,11 +47,15 @@ const previousPageTransition = [
     ],
     { optional: true }
   ),
-  query(':enter', [style({ left: '-100%' })]),
+  query(':enter', [style({ transform: 'translateX(-100%)' })]),
   query(':leave', animateChild()),
   group([
-    query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
-    query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+    query(':leave', [
+      animate('300ms ease-out', style({ transform: 'translateX(100%)' })),
+    ]),
+    query(':enter', [
+      animate('300ms ease-out', style({ transform: 'translateX(0%)' })),
+    ]),
   ]),
   query(':enter', animateChild()),
 ];
