@@ -10,22 +10,27 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    data: { animation: 'HomePage' },
   },
   {
     path: 'introduction',
     component: IntroductionComponent,
+    data: { animation: 'IntroductionPage' },
   },
   {
     path: 'randomfacts',
     component: RandomfactsComponent,
+    data: { animation: 'RandomfactsPage' },
   },
   {
     path: 'skills',
     component: SkillsComponent,
+    data: { animation: 'SkillsPage' },
   },
   {
     path: 'links',
     component: LinksComponent,
+    data: { animation: 'LinksPage' },
   },
 ];
 
