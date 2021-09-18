@@ -9,8 +9,10 @@
   <button mat-icon-button routerLink="skills">
     <mat-icon>handyman</mat-icon>
   </button>
-  <button mat-icon-button>
+  <button mat-icon-button routerLink="links">
     <mat-icon>link</mat-icon>
   </button>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div id="router" [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
